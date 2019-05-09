@@ -23,7 +23,9 @@ class PropertyController {
 
     const { latitude, longitude } = request.all()
 
+    //.with que realiza um processo de Eager Loading nas imagens adicionando-as ao retorno de cada imóvel
     const properties = Property.query()
+      .with('images')
       .nearBy(latitude, longitude, 10)
       .fetch()
 

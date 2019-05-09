@@ -38,3 +38,10 @@ destroy: Remover um registro;
 Route.resource('properties', 'PropertyController')
   .apiOnly()
   .middleware('auth')
+
+  //rota para salvar imagens ao imovel
+Route.post('properties/:id/images', 'ImageController.store')
+  .middleware('auth')
+
+//rota que apenas mostra a imagem
+Route.get('images/:path', 'ImageController.show')
